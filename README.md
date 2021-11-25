@@ -2,7 +2,7 @@
  
 An article published by the FiveThirtyEight was chosen to recreate its data graphics using its respective dataset. The article's title is "Early Senate Polls have Plenty to Tell Us About November (https://fivethirtyeight.com/features/early-senate-polls-have-plenty-to-tell-us-about-november/).
 
-Packages such as dplyr and ggplot2 in R Markdown were used to execute data visualization.
+Packages such as dplyr and ggplot2 in R were used to execute data visualization.
 
 This small project was done to practice reproducing descriptive statistics using R.
 

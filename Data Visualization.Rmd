@@ -9,7 +9,6 @@ output: pdf_document
 library(fivethirtyeight)
 library(ggplot2)
 library(dplyr)
-library(knitr)
 knitr::opts_chunk$set(echo = TRUE)
 ```
 

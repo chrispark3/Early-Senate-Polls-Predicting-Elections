@@ -1,0 +1,100 @@
+---
+title: "Early Senate Polls"
+author: "Chris Park"
+date: "10/21/2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+library(fivethirtyeight)
+library(tidyverse)
+library(knitr)
+library(ggplot2)
+library(Hmisc)
+library(mdsr)
+library(dplyr)
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+***
+
+# **Article Information:**
+
+## Article Title: Early Senate Polls Have Plenty to Tell Us About November
+## Click for link: *[ARTICLE HYPERLINK](https://fivethirtyeight.com/features/early-senate-polls-have-plenty-to-tell-us-about-november/)*
+
+## Here are the two visual graphics that I will be replicating:
+![](/Users/chrispark3/Desktop/GitHub/Early Senate Polls and Elections/EarlySenatePollPrediction.png){width=50%}
+![](/Users/chrispark3/Desktop/GitHub/Early Senate Polls and Elections/PresidentialAndSenate.png){width=50%}
+
+***
+# Harry Enton, the author of this article, did an analysis by collecting the average of all the polls for 107 races since 2006. He also collected the president's approval rating in the first half of the year for comparison.
+***
+
+# **Visual Graphic 1: Early Senate Poll Accuracy Since 2006**
+
+### In this first visual graphic, Enton was proving how early polls do a pretty good job of predicting the final vote margin. Through this, he presents the average error between the early polls. Enton later explains that the president's party's candidate won 83% of the time he or she led in the early poll average and lost 88 percent of the time when he or she trailed.
+
+***
+
+### First, I isolated the poll_average column and election_result column. The poll_average is the "Early poll margin" and the election_result is the "Final poll margin." I also arranged the poll_average column from smallest to largest for my own visual purposes (the x-axis goes from least to greatest). There was minimal data wrangling involved.
+
+```{r}
+senate_accuracy = senate_polls %>%
+  select(poll_average, election_result) %>%
+  arrange(desc(-poll_average))
+senate_accuracy
+```
+
+### Next, I made a scatter plot with a line of best fit by making my x-axis the poll_average (later renamed to Early poll margin) and my y-axis the election_result (later renamed to Final margin).
+
+```{r}
+senate_accuracy_plot = senate_accuracy %>%
+  ggplot(aes(x = poll_average, y = election_result)) +
+  geom_point() +
+  geom_smooth(colour = "red", method = "lm", se = FALSE) +
+  xlab("Early poll margin") +
+  ylab("Final margin") +
+  labs(
+    title = "Early Senate Poll Accuracy Since 2006",
+    subtitle = "Final margin vs. average margin, January to June"
+  )
+senate_accuracy_plot
+```
+
+***
+
+# **Visual Graphic 2: Early Presidential Approval And Senate Outcomes**
+
+### In this second graphic, Enton was shows how a president's approval rating isn't as strongly tied to the ultimate result. The data is much more scattered in this graphic compared to the first graphic. Through this, he later explains how the 58 races in the sample where the president's statewide approval rating was less than 43 percent, the president's party candidate lost. However, when a president's approval rating was greater than 43%, the president's candidate lost 35 percent of races.
+
+***
+
+### First, I isolated the presidential_approval column and election_result column. The presidential_approval is the "Early presidential approval rating" and the election_result is the "Final poll margin." I also arranged the presidential_approval column from smallest to largest for my own visual purposes (the x-axis goes from least to greatest). There was minimal data wrangling involved.
+
+```{r}
+presidential_senate = senate_polls %>%
+  select(presidential_approval, election_result) %>%
+  arrange(desc(-presidential_approval))
+presidential_senate
+```
+
+### Next, I made a scatter plot with a line of best fit by making my x-axis the presidential_approval (later renamed to Early presidential approval rating) and my y-axis the election_result (later renamed to Final margin).
+
+```{r}
+presidential_senate_plot = presidential_senate %>%
+  ggplot(aes(x = presidential_approval, y = election_result)) +
+  geom_point() +
+  geom_smooth(colour = "red", method = "lm", se = FALSE) +
+  xlab("Early presidential approval") +
+  ylab("Final margin") +
+  labs(
+    title = "Early Presidential Approval And Senate Outcomes",
+    subtitle = "Senate results vs. January to June approval average, since 2006"
+  )
+presidential_senate_plot
+```
+
+***
+# Ultimately, a president's approval rating is far from a perfect predictor of how Sente races will turn out. Polls are better predictors than presidential approval. However, implementing data from both will result in the best prediction according to Enten.
+***

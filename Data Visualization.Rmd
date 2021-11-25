@@ -7,11 +7,7 @@ output: pdf_document
 
 ```{r setup, include=FALSE}
 library(fivethirtyeight)
-library(tidyverse)
-library(knitr)
 library(ggplot2)
-library(Hmisc)
-library(mdsr)
 library(dplyr)
 knitr::opts_chunk$set(echo = TRUE)
 ```

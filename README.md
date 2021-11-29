@@ -12,7 +12,7 @@ The first visual graphic shows early senate poll accuracy since 2006. This prove
 
 The second visual graphic shows early presidential approval and senate outcomes. It displays how a president's approval rating isn't as strongly tied to the ultimate result. The data is much more scattered in this graphic compared to the first graphic. Therefore, the 58 races in the sample where the president's statewide approval rating was less than 43%, the president's party candidate lost. However, when a president's approval rating was greater than 43%, the president's candidate lost 35% of races. 
 
-Ultimately, a president's approval rating is far from a perfect predictor of how Senate races will turn out. Polls are better predictors than presidential approval. however, implementing data form both will result in the best prediction. 
+Ultimately, a president's approval rating is far from a perfect predictor of how Senate races will turn out. Polls are better predictors than presidential approval. However, implementing data form both will result in the best prediction. 
 
 #### The full project can be found in _Data Visualization.pdf_ and its respective R code in _Data Visualization.Rmd_
 #### Other files included are the pictures of the data graphics _(.png)_
